@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue常用的指令3:v-for循环</title>
+    <script src="js/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el:"#box",//el绑定元素,里面是选择器
+                data:{ //  放数据的东西,angular中的$scope
+                    json:{"a":"apple","b":"banana","c":"origin"},
+                    arr:["张三","李四","王五"]
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <!--循环数组-->
+        <ul>
+            <li v-for="name in arr">
+                {{name}}
+            </li>
+        </ul>
+        <!--循环json-->
+        <ol>
+            <li v-for="(fru,key,index) in json">
+                键:{{key}}
+                <br>
+                值:{{fru}}
+                <br>
+                索引:{{index}}
+            </li>
+        </ol>
+
+    </div>
+</body>
+</html>
