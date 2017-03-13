@@ -27,6 +27,7 @@
             </li>
         </ul>
         <!--循环json-->
+        <hr>
         <ol>
             <li v-for="(fru,key,index) in json">
                 键:{{key}}
@@ -36,7 +37,13 @@
                 索引:{{index}}
             </li>
         </ol>
-
+        <!--循环json-->
+        <hr>
+        <ol>
+            <li v-for="(value,key,index) in json">
+                {{key}}=>{{value}}=>{{index}}
+            </li>
+        </ol>
     </div>
 </body>
 </html>

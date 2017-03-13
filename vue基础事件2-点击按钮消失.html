@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue基础事件1-点击按钮消失</title>
+    <script src="js/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el:"#box",//el绑定元素,里面是选择器
+                data:{
+                    a:true
+                },
+                methods:{
+                    hideDiv:function(){
+                        this.a = false
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮" v-on:click="hideDiv">
+
+        <div style="width:100px;height:100px;background:red" v-show="a"></div>
+
+    </div>
+</body>
+</html>
