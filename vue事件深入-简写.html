@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue雏形</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show() {
+                        alert(1);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <!--这不是简写-->
+        <input type="button" value="按钮" v-on:click="show">
+        <!--这是简写的-->
+        <input type="button" value="按钮2" @click='show'>
+    </div>
+</body>
+
+</html>

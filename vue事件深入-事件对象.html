@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue雏形</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show(ev) {
+                        console.log(ev.clientX); //js原生的事件对象
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <!--事件对象 $event-->
+        <input type="button" value="按钮2" @click='show($event)'>
+    </div>
+</body>
+
+</html>
