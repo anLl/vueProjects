@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue属性</title>
+    <script src="js/vue1x.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var vm = new Vue({
+                el: "#box", //el绑定元素,里面是选择器
+                data: {
+                    message: "Hello World",
+                    message2: "HELLO WORLD",
+                    howMatch: 12
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <!--转大写-->
+        {{message | uppercase}}
+        <!--转小写-->
+        <br> {{message2 | lowercase}}
+        <!--首字母大写-->
+        <br>{{message2 | lowercase | capitalize}}
+        <br>{{howMatch | currency "¥"}}
+    </div>
+</body>
+
+</html>

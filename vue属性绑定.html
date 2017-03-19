@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue属性</title>
+    <script src="js/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var vm = new Vue({
+                el: "#box", //el绑定元素,里面是选择器
+                data: {
+                    imgurl: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png',
+                    w: '200px',
+                    colorsJson: {
+                        colorRed: true,
+                        bgBule: false
+
+                    },
+                    styleJson: {
+                        fontSize: "24px"
+                    }
+                }
+            });
+        }
+    </script>
+    <style>
+        .colorRed {
+            color: red;
+        }
+        
+        .bgBule {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img :src="imgurl" :width="w">
+
+        <span :class="colorsJson" :style="styleJson">我是文字</span>
+    </div>
+</body>
+
+</html>

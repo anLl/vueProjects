@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue雏形</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show(ev) {
+                        alert(ev); //点击右键弹出
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <!--这样右键会触发alert,同时也会默认的右键事件-->
+        <!--<input type="button" value="按钮2" @contextmenu='show($event)'>-->
+        <input type="button" value="按钮2" @contextmenu.prevent='show($event)'>
+    </div>
+</body>
+
+</html>

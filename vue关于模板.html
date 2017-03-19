@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue属性</title>
+    <script src="js/vue1x.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var vm = new Vue({
+                el: "#box", //el绑定元素,里面是选择器
+                data: {
+                    message: "Hello World"
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" name="text" v-model='message'>
+        <br> {{message}}
+        <!--vue 1.0中,用*号表示只绑定一次数据,2.0老夫暂时还不会-->
+        <br> {{*message}}
+        <!--在1.0中,这个写法会解析输入框中的HTML标签-->
+        <br> {{{message}}}
+    </div>
+</body>
+
+</html>

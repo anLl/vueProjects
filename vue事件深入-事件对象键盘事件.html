@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue雏形</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show(ev) {
+                        // if (ev.keyCode == 13) {
+                        //     alert("按了回车")
+                        // }
+
+                        alert("您按了回车")
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <!--通过keyCode判断按键-->
+        <!--<input type="text" name="name" value="" @keydown="show($event)">-->
+
+
+        <!--或者几个常用的按键-->
+
+        <input type="text" name="name" value="" @keydown.enter="show($event)">
+
+
+    </div>
+</body>
+
+</html>

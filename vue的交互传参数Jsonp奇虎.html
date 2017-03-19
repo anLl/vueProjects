@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue交互-resource.get</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/vue1x.js"></script>-->
+    <script src="./vue-resource.js"></script>
+    <!--<script src="bower_components/vue-resource/dist/vue-resource.js"></script>-->
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var vm = new Vue({
+                el: "#box", //el绑定元素,里面是选择器
+                data: {
+
+                },
+                methods: {
+                    getData: function() {
+                        this.$http.jsonp('https://sug.so.360.cn/suggest', {
+                            word: 'a'
+                        }).then(function(res) {
+                            alert(res.data.s)
+                        }, function(err) {
+                            console.log(err.data)
+                        })
+                    }
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" @click='getData' value="奇虎按钮">
+    </div>
+</body>
+
+</html>

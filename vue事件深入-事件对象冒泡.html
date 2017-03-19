@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue雏形</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var box = new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show(ev) {
+                        alert(ev.clientX); //js原生的事件对象
+                    },
+                    show2() {
+                        alert(2); //事假冒泡了，需要在按钮处阻止
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <!--事件对象 $event-->
+        <div @click="show2">
+            <input type="button" value="按钮2" @click.stop='show($event)'>
+        </div>
+
+    </div>
+</body>
+
+</html>
