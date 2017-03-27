@@ -1,53 +1,48 @@
 /**
- * JSONP client (Browser).
+ * JSONP client.
  */
 
-import Promise from '../../promise';
+var _ = require('../../util');
+var Promise = require('../../promise');
 
-export default function (request) {
-    return new Promise(resolve => {
+module.exports = function (request) {
+    return new Promise(function (resolve) {
 
-        var name = request.jsonp || 'callback', callback = request.jsonpCallback || '_jsonp' + Math.random().toString(36).substr(2), body = null, handler, script;
+        var callback = '_jsonp' + Math.random().toString(36).substr(2), response = {request: request, data: null}, handler, script;
 
-        handler = ({type}) => {
-
-            var status = 0;
-
-            if (type === 'load' && body !== null) {
-                status = 200;
-            } else if (type === 'error') {
-                status = 500;
-            }
-
-            if (status && window[callback]) {
-                delete window[callback];
-                document.body.removeChild(script);
-            }
-
-            resolve(request.respondWith(body, {status}));
+        request.params[request.jsonp] = callback;
+        request.cancel = function () {
+            handler({type: 'cancel'});
         };
-
-        window[callback] = result => {
-            body = JSON.stringify(result);
-        };
-
-        request.abort = () => {
-            handler({type: 'abort'});
-        };
-
-        request.params[name] = callback;
-
-        if (request.timeout) {
-            setTimeout(request.abort, request.timeout);
-        }
 
         script = document.createElement('script');
-        script.src = request.getUrl();
+        script.src = _.url(request);
         script.type = 'text/javascript';
         script.async = true;
+
+        window[callback] = function (data) {
+            response.data = data;
+        };
+
+        handler = function (event) {
+
+            if (event.type === 'load' && response.data !== null) {
+                response.status = 200;
+            } else if (event.type === 'error') {
+                response.status = 404;
+            } else {
+                response.status = 0;
+            }
+
+            resolve(response);
+
+            delete window[callback];
+            document.body.removeChild(script);
+        };
+
         script.onload = handler;
         script.onerror = handler;
 
         document.body.appendChild(script);
     });
-}
+};

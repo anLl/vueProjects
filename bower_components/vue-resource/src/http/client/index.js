@@ -2,71 +2,64 @@
  * Base client.
  */
 
-import Promise from '../../promise';
-import xhrClient from './xhr';
-import nodeClient from './node';
-import { warn, when, isObject, isFunction, inBrowser } from '../../util';
+var _ = require('../../util');
+var Promise = require('../../promise');
+var xhrClient = require('./xhr');
 
-export default function (context) {
+module.exports = function (request) {
 
-    var reqHandlers = [sendRequest], resHandlers = [], handler;
+    var response = (request.client || xhrClient)(request);
 
-    if (!isObject(context)) {
-        context = null;
-    }
+    return Promise.resolve(response).then(function (response) {
 
-    function Client(request) {
-        return new Promise(resolve => {
+        if (response.headers) {
 
-            function exec() {
+            var headers = parseHeaders(response.headers);
 
-                handler = reqHandlers.pop();
+            response.headers = function (name) {
 
-                if (isFunction(handler)) {
-                    handler.call(context, request, next);
+                if (name) {
+                    return headers[_.toLower(name)];
+                }
+
+                return headers;
+            };
+
+        }
+
+        response.ok = response.status >= 200 && response.status < 300;
+
+        return response;
+    });
+
+};
+
+function parseHeaders(str) {
+
+    var headers = {}, value, name, i;
+
+    if (_.isString(str)) {
+        _.each(str.split('\n'), function (row) {
+
+            i = row.indexOf(':');
+            name = _.trim(_.toLower(row.slice(0, i)));
+            value = _.trim(row.slice(i + 1));
+
+            if (headers[name]) {
+
+                if (_.isArray(headers[name])) {
+                    headers[name].push(value);
                 } else {
-                    warn(`Invalid interceptor of type ${typeof handler}, must be a function`);
-                    next();
-                }
-            }
-
-            function next(response) {
-
-                if (isFunction(response)) {
-
-                    resHandlers.unshift(response);
-
-                } else if (isObject(response)) {
-
-                    resHandlers.forEach(handler => {
-                        response = when(response, response => {
-                            return handler.call(context, response) || response;
-                        });
-                    });
-
-                    when(response, resolve);
-
-                    return;
+                    headers[name] = [headers[name], value];
                 }
 
-                exec();
+            } else {
+
+                headers[name] = value;
             }
 
-            exec();
-
-        }, context);
+        });
     }
 
-    Client.use = handler => {
-        reqHandlers.push(handler);
-    };
-
-    return Client;
-}
-
-function sendRequest(request, resolve) {
-
-    var client = request.client || (inBrowser ? xhrClient : nodeClient);
-
-    resolve(client(request));
+    return headers;
 }

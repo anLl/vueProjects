@@ -2,167 +2,119 @@
  * Utility functions.
  */
 
-import Promise from './promise';
+var _ = exports, array = [], console = window.console;
 
-var {hasOwnProperty} = {}, {slice} = [], debug = false, ntick;
-
-export const inBrowser = typeof window !== 'undefined';
-
-export default function ({config, nextTick}) {
-    ntick = nextTick;
-    debug = config.debug || !config.silent;
-}
-
-export function warn(msg) {
-    if (typeof console !== 'undefined' && debug) {
+_.warn = function (msg) {
+    if (console && _.warning && (!_.config.silent || _.config.debug)) {
         console.warn('[VueResource warn]: ' + msg);
     }
-}
+};
 
-export function error(msg) {
-    if (typeof console !== 'undefined') {
+_.error = function (msg) {
+    if (console) {
         console.error(msg);
     }
-}
+};
 
-export function nextTick(cb, ctx) {
-    return ntick(cb, ctx);
-}
+_.trim = function (str) {
+    return str.replace(/^\s*|\s*$/g, '');
+};
 
-export function trim(str) {
-    return str ? str.replace(/^\s*|\s*$/g, '') : '';
-}
-
-export function toLower(str) {
+_.toLower = function (str) {
     return str ? str.toLowerCase() : '';
-}
+};
 
-export function toUpper(str) {
-    return str ? str.toUpperCase() : '';
-}
+_.isArray = Array.isArray;
 
-export const isArray = Array.isArray;
-
-export function isString(val) {
+_.isString = function (val) {
     return typeof val === 'string';
-}
+};
 
-export function isBoolean(val) {
-    return val === true || val === false;
-}
-
-export function isFunction(val) {
+_.isFunction = function (val) {
     return typeof val === 'function';
-}
+};
 
-export function isObject(obj) {
+_.isObject = function (obj) {
     return obj !== null && typeof obj === 'object';
-}
+};
 
-export function isPlainObject(obj) {
-    return isObject(obj) && Object.getPrototypeOf(obj) == Object.prototype;
-}
+_.isPlainObject = function (obj) {
+    return _.isObject(obj) && Object.getPrototypeOf(obj) == Object.prototype;
+};
 
-export function isBlob(obj) {
-    return typeof Blob !== 'undefined' && obj instanceof Blob;
-}
+_.options = function (fn, obj, options) {
 
-export function isFormData(obj) {
-    return typeof FormData !== 'undefined' && obj instanceof FormData;
-}
+    options = options || {};
 
-export function when(value, fulfilled, rejected) {
-
-    var promise = Promise.resolve(value);
-
-    if (arguments.length < 2) {
-        return promise;
+    if (_.isFunction(options)) {
+        options = options.call(obj);
     }
 
-    return promise.then(fulfilled, rejected);
-}
+    return _.merge(fn.bind({$vm: obj, $options: options}), fn, {$options: options});
+};
 
-export function options(fn, obj, opts) {
-
-    opts = opts || {};
-
-    if (isFunction(opts)) {
-        opts = opts.call(obj);
-    }
-
-    return merge(fn.bind({$vm: obj, $options: opts}), fn, {$options: opts});
-}
-
-export function each(obj, iterator) {
+_.each = function (obj, iterator) {
 
     var i, key;
 
-    if (isArray(obj)) {
+    if (typeof obj.length == 'number') {
         for (i = 0; i < obj.length; i++) {
             iterator.call(obj[i], obj[i], i);
         }
-    } else if (isObject(obj)) {
+    } else if (_.isObject(obj)) {
         for (key in obj) {
-            if (hasOwnProperty.call(obj, key)) {
+            if (obj.hasOwnProperty(key)) {
                 iterator.call(obj[key], obj[key], key);
             }
         }
     }
 
     return obj;
-}
+};
 
-export const assign = Object.assign || _assign;
+_.defaults = function (target, source) {
 
-export function merge(target) {
-
-    var args = slice.call(arguments, 1);
-
-    args.forEach(source => {
-        _merge(target, source, true);
-    });
-
-    return target;
-}
-
-export function defaults(target) {
-
-    var args = slice.call(arguments, 1);
-
-    args.forEach(source => {
-
-        for (var key in source) {
-            if (target[key] === undefined) {
-                target[key] = source[key];
-            }
-        }
-
-    });
-
-    return target;
-}
-
-function _assign(target) {
-
-    var args = slice.call(arguments, 1);
-
-    args.forEach(source => {
-        _merge(target, source);
-    });
-
-    return target;
-}
-
-function _merge(target, source, deep) {
     for (var key in source) {
-        if (deep && (isPlainObject(source[key]) || isArray(source[key]))) {
-            if (isPlainObject(source[key]) && !isPlainObject(target[key])) {
+        if (target[key] === undefined) {
+            target[key] = source[key];
+        }
+    }
+
+    return target;
+};
+
+_.extend = function (target) {
+
+    var args = array.slice.call(arguments, 1);
+
+    args.forEach(function (arg) {
+        merge(target, arg);
+    });
+
+    return target;
+};
+
+_.merge = function (target) {
+
+    var args = array.slice.call(arguments, 1);
+
+    args.forEach(function (arg) {
+        merge(target, arg, true);
+    });
+
+    return target;
+};
+
+function merge(target, source, deep) {
+    for (var key in source) {
+        if (deep && (_.isPlainObject(source[key]) || _.isArray(source[key]))) {
+            if (_.isPlainObject(source[key]) && !_.isPlainObject(target[key])) {
                 target[key] = {};
             }
-            if (isArray(source[key]) && !isArray(target[key])) {
+            if (_.isArray(source[key]) && !_.isArray(target[key])) {
                 target[key] = [];
             }
-            _merge(target[key], source[key], deep);
+            merge(target[key], source[key], deep);
         } else if (source[key] !== undefined) {
             target[key] = source[key];
         }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue交互-resource.post</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/vue1x.js"></script>-->
+    <script src="bower_components/vue-resource/dist/vue-resource.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            let vm = new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods:{
+                    postText(){
+                        this.$http.post("postText.txt").then(function(sucRes){
+                            console.log(sucRes);
+                            alert(sucRes.data);
+                        },function(errRes){
+
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+        <input type="button" @click="postText" value="获取postText.txt中的数据">
+    </div>
+</body>
+
+</html>

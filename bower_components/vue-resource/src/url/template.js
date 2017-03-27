@@ -2,15 +2,15 @@
  * URL Template (RFC 6570) Transform.
  */
 
-import { expand } from '../lib/url-template';
+var UrlTemplate = require('../lib/url-template');
 
-export default function (options) {
+module.exports = function (options) {
 
-    var variables = [], url = expand(options.url, options.params, variables);
+    var variables = [], url = UrlTemplate.expand(options.url, options.params, variables);
 
-    variables.forEach((key) => {
+    variables.forEach(function (key) {
         delete options.params[key];
     });
 
     return url;
-}
+};

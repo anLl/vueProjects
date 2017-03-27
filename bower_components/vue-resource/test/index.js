@@ -1,9 +1,9 @@
-import Vue from 'vue';
-import VueResource from '../src/index';
+var Vue = require('vue');
+var Resource = require('../src');
 
-Vue.use(VueResource);
+Vue.use(Resource);
 
-require('./url');
-require('./http');
-require('./resource');
-require('./promise');
+// require specs
+require('./url.js');
+require('./http.js');
+require('./promise.js');

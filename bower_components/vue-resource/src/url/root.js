@@ -2,15 +2,15 @@
  * Root Prefix Transform.
  */
 
-import { isString } from '../util';
+var _ = require('../util');
 
-export default function (options, next) {
+module.exports = function (options, next) {
 
     var url = next(options);
 
-    if (isString(options.root) && !url.match(/^(https?:)?\//)) {
+    if (_.isString(options.root) && !url.match(/^(https?:)?\//)) {
         url = options.root + '/' + url;
     }
 
     return url;
-}
+};

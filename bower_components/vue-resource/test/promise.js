@@ -1,6 +1,7 @@
-import Promise from '../src/promise';
+var Promise = require('../src/promise');
+var isNative = window.Promise !== undefined;
 
-describe('Vue.promise ' + (window.Promise !== undefined ? '(native)' : '(polyfill)'), function () {
+describe('Vue.promise ' + (isNative ? '(native)' : '(polyfill)'), function () {
 
     it('then fulfill', function (done) {
 
@@ -119,6 +120,24 @@ describe('Vue.promise ' + (window.Promise !== undefined ? '(native)' : '(polyfil
             expect(this).toBe(context);
             done();
         });
+
+    });
+
+    it('no chain breaking', function (done) {
+
+        var promise = Promise.reject();
+
+        Promise.all([
+
+            promise.catch(function () {
+                expect(true).toBe(true);
+            }),
+
+            promise.catch(function () {
+                fail('Chain break');
+            })
+
+        ]).then(done);
 
     });
 

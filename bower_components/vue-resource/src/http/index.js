@@ -2,69 +2,97 @@
  * Service for sending network requests.
  */
 
-const COMMON_HEADERS = {'Accept': 'application/json, text/plain, */*'};
-const JSON_CONTENT_TYPE = {'Content-Type': 'application/json;charset=utf-8'};
+var _ = require('../util');
+var Client = require('./client');
+var Promise = require('../promise');
+var interceptor = require('./interceptor');
+var jsonType = {'Content-Type': 'application/json'};
 
-import cors from './interceptor/cors';
-import body from './interceptor/body';
-import jsonp from './interceptor/jsonp';
-import before from './interceptor/before';
-import method from './interceptor/method';
-import header from './interceptor/header';
-import Client from './client/index';
-import Request from './request';
-import Promise from '../promise';
-import { assign, defaults, error } from '../util';
+function Http(url, options) {
 
-export default function Http(options) {
+    var client = Client, request, promise;
 
-    var self = this || {}, client = Client(self.$vm);
+    Http.interceptors.forEach(function (handler) {
+        client = interceptor(handler, this.$vm)(client);
+    }, this);
 
-    defaults(options || {}, self.$options, Http.options);
-
-    Http.interceptors.forEach(handler => {
-        client.use(handler);
-    });
-
-    return client(new Request(options)).then(response => {
+    options = _.isObject(url) ? url : _.extend({url: url}, options);
+    request = _.merge({}, Http.options, this.$options, options);
+    promise = client(request).bind(this.$vm).then(function (response) {
 
         return response.ok ? response : Promise.reject(response);
 
-    }, response => {
+    }, function (response) {
 
         if (response instanceof Error) {
-            error(response);
+            _.error(response);
         }
 
         return Promise.reject(response);
     });
+
+    if (request.success) {
+        promise.success(request.success);
+    }
+
+    if (request.error) {
+        promise.error(request.error);
+    }
+
+    return promise;
 }
 
-Http.options = {};
-
-Http.headers = {
-    put: JSON_CONTENT_TYPE,
-    post: JSON_CONTENT_TYPE,
-    patch: JSON_CONTENT_TYPE,
-    delete: JSON_CONTENT_TYPE,
-    common: COMMON_HEADERS,
-    custom: {}
+Http.options = {
+    method: 'get',
+    data: '',
+    params: {},
+    headers: {},
+    xhr: null,
+    upload: null,
+    jsonp: 'callback',
+    beforeSend: null,
+    crossOrigin: null,
+    emulateHTTP: false,
+    emulateJSON: false,
+    timeout: 0
 };
 
-Http.interceptors = [before, method, body, jsonp, header, cors];
+Http.interceptors = [
+    require('./before'),
+    require('./timeout'),
+    require('./jsonp'),
+    require('./method'),
+    require('./mime'),
+    require('./header'),
+    require('./cors')
+];
 
-['get', 'delete', 'head', 'jsonp'].forEach(method => {
+Http.headers = {
+    put: jsonType,
+    post: jsonType,
+    patch: jsonType,
+    delete: jsonType,
+    common: {'Accept': 'application/json, text/plain, */*'},
+    custom: {'X-Requested-With': 'XMLHttpRequest'}
+};
 
-    Http[method] = function (url, options) {
-        return this(assign(options || {}, {url, method}));
+['get', 'put', 'post', 'patch', 'delete', 'jsonp'].forEach(function (method) {
+
+    Http[method] = function (url, data, success, options) {
+
+        if (_.isFunction(data)) {
+            options = success;
+            success = data;
+            data = undefined;
+        }
+
+        if (_.isObject(success)) {
+            options = success;
+            success = undefined;
+        }
+
+        return this(url, _.extend({method: method, data: data, success: success}, options));
     };
-
 });
 
-['post', 'put', 'patch'].forEach(method => {
-
-    Http[method] = function (url, body, options) {
-        return this(assign(options || {}, {url, method, body}));
-    };
-
-});
+module.exports = _.http = Http;

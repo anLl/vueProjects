@@ -2,25 +2,25 @@
  * URL Template v2.0.6 (https://github.com/bramstein/url-template)
  */
 
-export function expand(url, params, variables) {
+exports.expand = function (url, params, variables) {
 
-    var tmpl = parse(url), expanded = tmpl.expand(params);
+    var tmpl = this.parse(url), expanded = tmpl.expand(params);
 
     if (variables) {
         variables.push.apply(variables, tmpl.vars);
     }
 
     return expanded;
-}
+};
 
-export function parse(template) {
+exports.parse = function (template) {
 
     var operators = ['+', '#', '.', '/', ';', '?', '&'], variables = [];
 
     return {
         vars: variables,
-        expand(context) {
-            return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, (_, expression, literal) => {
+        expand: function (context) {
+            return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function (_, expression, literal) {
                 if (expression) {
 
                     var operator = null, values = [];
@@ -30,9 +30,9 @@ export function parse(template) {
                         expression = expression.substr(1);
                     }
 
-                    expression.split(/,/g).forEach((variable) => {
+                    expression.split(/,/g).forEach(function (variable) {
                         var tmp = /([^:\*]*)(?::(\d+)|(\*))?/.exec(variable);
-                        values.push.apply(values, getValues(context, operator, tmp[1], tmp[2] || tmp[3]));
+                        values.push.apply(values, exports.getValues(context, operator, tmp[1], tmp[2] || tmp[3]));
                         variables.push(tmp[1]);
                     });
 
@@ -52,18 +52,18 @@ export function parse(template) {
                     }
 
                 } else {
-                    return encodeReserved(literal);
+                    return exports.encodeReserved(literal);
                 }
             });
         }
     };
-}
+};
 
-function getValues(context, operator, key, modifier) {
+exports.getValues = function (context, operator, key, modifier) {
 
     var value = context[key], result = [];
 
-    if (isDefined(value) && value !== '') {
+    if (this.isDefined(value) && value !== '') {
         if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
             value = value.toString();
 
@@ -71,37 +71,37 @@ function getValues(context, operator, key, modifier) {
                 value = value.substring(0, parseInt(modifier, 10));
             }
 
-            result.push(encodeValue(operator, value, isKeyOperator(operator) ? key : null));
+            result.push(this.encodeValue(operator, value, this.isKeyOperator(operator) ? key : null));
         } else {
             if (modifier === '*') {
                 if (Array.isArray(value)) {
-                    value.filter(isDefined).forEach((value) => {
-                        result.push(encodeValue(operator, value, isKeyOperator(operator) ? key : null));
-                    });
+                    value.filter(this.isDefined).forEach(function (value) {
+                        result.push(this.encodeValue(operator, value, this.isKeyOperator(operator) ? key : null));
+                    }, this);
                 } else {
-                    Object.keys(value).forEach((k) => {
-                        if (isDefined(value[k])) {
-                            result.push(encodeValue(operator, value[k], k));
+                    Object.keys(value).forEach(function (k) {
+                        if (this.isDefined(value[k])) {
+                            result.push(this.encodeValue(operator, value[k], k));
                         }
-                    });
+                    }, this);
                 }
             } else {
                 var tmp = [];
 
                 if (Array.isArray(value)) {
-                    value.filter(isDefined).forEach((value) => {
-                        tmp.push(encodeValue(operator, value));
-                    });
+                    value.filter(this.isDefined).forEach(function (value) {
+                        tmp.push(this.encodeValue(operator, value));
+                    }, this);
                 } else {
-                    Object.keys(value).forEach((k) => {
-                        if (isDefined(value[k])) {
+                    Object.keys(value).forEach(function (k) {
+                        if (this.isDefined(value[k])) {
                             tmp.push(encodeURIComponent(k));
-                            tmp.push(encodeValue(operator, value[k].toString()));
+                            tmp.push(this.encodeValue(operator, value[k].toString()));
                         }
-                    });
+                    }, this);
                 }
 
-                if (isKeyOperator(operator)) {
+                if (this.isKeyOperator(operator)) {
                     result.push(encodeURIComponent(key) + '=' + tmp.join(','));
                 } else if (tmp.length !== 0) {
                     result.push(tmp.join(','));
@@ -119,32 +119,32 @@ function getValues(context, operator, key, modifier) {
     }
 
     return result;
-}
+};
 
-function isDefined(value) {
+exports.isDefined = function (value) {
     return value !== undefined && value !== null;
-}
+};
 
-function isKeyOperator(operator) {
+exports.isKeyOperator = function (operator) {
     return operator === ';' || operator === '&' || operator === '?';
-}
+};
 
-function encodeValue(operator, value, key) {
+exports.encodeValue = function (operator, value, key) {
 
-    value = (operator === '+' || operator === '#') ? encodeReserved(value) : encodeURIComponent(value);
+    value = (operator === '+' || operator === '#') ? this.encodeReserved(value) : encodeURIComponent(value);
 
     if (key) {
         return encodeURIComponent(key) + '=' + value;
     } else {
         return value;
     }
-}
+};
 
-function encodeReserved(str) {
-    return str.split(/(%[0-9A-Fa-f]{2})/g).map((part) => {
+exports.encodeReserved = function (str) {
+    return str.split(/(%[0-9A-Fa-f]{2})/g).map(function (part) {
         if (!/%[0-9A-Fa-f]/.test(part)) {
             part = encodeURI(part);
         }
         return part;
     }).join('');
-}
+};

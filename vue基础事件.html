@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>vue基础事件1</title>
-    <script src="js/vue.js"></script>
+    <script src="js/vue1x.js"></script>
     <!--<script src="js/jquery-1.11.3.min.js"></script>-->
     <script>
         window.onload  =function(){
@@ -28,7 +28,7 @@
         <input type="button" value="按钮" v-on:click="addApples">
 
         <ul>
-            <li v-for="values in apples">
+            <li v-for="values in apples" track-by="$index">
                 {{values}}
             </li>
         </ul>

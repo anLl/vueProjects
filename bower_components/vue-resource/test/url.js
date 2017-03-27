@@ -1,18 +1,18 @@
-import Vue from 'vue';
+var Vue = require('vue');
 
 describe('Vue.url', function () {
+
+    it('data/:id', function () {
+
+        expect(Vue.url('data/:id')).toBe('data');
+        expect(Vue.url('data/:id', {id: 1})).toBe('data/1');
+
+    });
 
     it('data{/id}', function () {
 
         expect(Vue.url('data{/id}')).toBe('data');
         expect(Vue.url('data{/id}', {id: 1})).toBe('data/1');
-
-    });
-
-    it('data{/array}', function () {
-
-        expect(Vue.url('data{?array}')).toBe('data');
-        expect(Vue.url('data{?array}', {array: [1,2,3]})).toBe('data?array=1,2,3');
 
     });
 

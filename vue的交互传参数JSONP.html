@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue交互-resource传参数-JSONP</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/vue1x.js"></script>-->
+    <script src="bower_components/vue-resource/dist/vue-resource.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            let vm = new Vue({
+                el: "#box",
+                data: {
+                    parmA:'',
+                    result:[],
+                },
+                methods:{
+                    /* search(){
+                        this.$http.jsonp("https://sug.so.360.cn/suggest?callback=suggest_so",{
+                            word:this.parmA
+                        }).then(function(sucRes){
+                            this.result = sucRes.data.s
+                        },function(errRes){
+
+                        });
+                    }*/
+                    search(){
+                        this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+                            wd:this.parmA,
+
+                        },{
+//                            修改默认的jsonp回调函数名的参数名 默认是callback
+                            jsonp:"cb"
+                        }).then(function(sucRes){
+                            console.log(sucRes.data);
+                            this.result = sucRes.data.s
+                        },function(errRes){
+
+                        });
+                    }
+
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<div id="box">
+    <input type="text" v-model="parmA">
+    <input type="button" @click="search" value="JSONP获取好搜数据">
+    <ul>
+        <li v-for="searchResult in result">
+            {{searchResult}}
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>
