@@ -45,8 +45,8 @@
                             console.log(errRes)
                         });
                     },
-                    show:function(ev){
-                        alert(ev.keyCode);
+                    show(ev) {
+                       this.addWei();
                     },
                     getPageData(n){
                         this.$http.get({
@@ -79,9 +79,9 @@
 <div class="znsArea">
     <!--留言-->
     <div class="takeComment">
-        <textarea name="textarea" class="takeTextField" id="tijiaoText" v-model="textMain"></textarea>
+        <textarea name="textarea" class="takeTextField" id="tijiaoText" v-model="textMain" @keydown.enter.prevent="show"></textarea>
         <div class="takeSbmComment">
-            <input type="button" class="inputs" @click="addWei" @keydown.enter="show($event)"/>
+            <input type="button" class="inputs" @click="addWei"/>
             <span>(可按 Enter 回复)</span>
         </div>
     </div>
