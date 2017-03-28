@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue属性</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            let vm = new Vue({
+                el: "#box", //el绑定元素,里面是选择器
+                data: {
+                    msg:'Hello',
+                    msg2:'world',
+                    msg3:'<strong>vue</strong>'
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <!--普通写法-->
+        <p>{{msg}}</p>
+        <!--使用v-text指令来防止闪烁-->
+        <p v-text="msg2"></p>
+        <!--数据中带有html标签，v-text就不行了-->
+        <p v-text="msg3"></p>
+        <!--使用v-html来解析数据中的html-->
+        <p v-html="msg3"></p>
+
+        <!--v-clock，v-text，v-html 都能防止闪烁-->
+    </div>
+</body>
+
+</html>

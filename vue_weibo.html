@@ -6,49 +6,44 @@
     <link href="css/weibo.css" rel="stylesheet" type="text/css"/>
     <script src="bower_components/vue/dist/vue.js"></script>
     <script src="bower_components/vue-resource/dist/vue-resource.js"></script>
+    <style>
+        [v-cloak ]{
+            display: none;
+        }
+    </style>
     <script>
-        window.onload =function(){
-            let URL = 'weibo.php';
+        window.onload = function () {
             let vm = new Vue({
-                el:".znsArea",
-                data:{
-                    textMain:'',
-                    myData:[]
+                el: ".znsArea",
+                data: {
+                    msg: '',
+                    myData: []
                 },
-                ready(){
-                    this.getPageData(1);
-                },
-                methods:{
-                    addWei(){
-                        this.$http({
-                            url:URL,
-                            data:{
-                                act:'add',
-                                content:this.textMain
-                            }
-                        }).then(function(sucRes){
-                            let server=sucRes.data;
-                            if(this.textMain !==''){
+                methods: {
+                    addMessage() {
+                        if(this.msg !==''){
+                            this.$http.get({
+                                url: "weibo.php",
+                                data: {
+                                    act: "add",
+                                    content: this.msg
+                                }
+                            }).then(function (sucRes) {
+                                let datas = sucRes.data;
                                 this.myData.unshift({
-                                    content:this.textMain,
-                                    time:server.time,
-                                    acc:0,
-                                    ref:0,
-                                    id:server.id
+                                    content: this.msg,
+                                    time: datas.time,
+                                    acc: 0,
+                                    ref: 0,
+                                    id: datas.id
                                 });
-                                this.textMain='';
-                            }else{
-                                alert("内容不能为空");
-                            }
-
-                        },function(errRes){
-                            console.log(errRes)
-                        });
+                                this.msg='';
+                            })
+                        }else{
+                            alert("评论不能为空");
+                        }
                     },
-                    show(ev) {
-                       this.addWei();
-                    },
-                    getPageData(n){
+                    getOldData(n){
                         this.$http.get({
                             url:"weibo.php",
                             data:{
@@ -56,21 +51,26 @@
                                 page:n
                             }
                         }).then(function(sucRes){
-                            let arr = sucRes.data;
-                            for(let i=0;i<arr.length;i++){
+                            let oldJson = sucRes.data;
+                            for(let i =0;i<oldJson.length;i++){
                                 this.myData.push({
-                                    content:arr[i].content,
-                                    time:arr[i].time,
-                                    acc:arr[i].acc,
-                                    ref:arr[i].ref,
-                                    id:arr[i].id
+                                    content:oldJson[i].content,
+                                    time:oldJson[i].time,
+                                    acc:oldJson[i].acc,
+                                    ref:oldJson[i].ref,
+                                    id:oldJson[i].id
                                 });
                             }
-
-                        })
+                        });
+                    },
+                    enterSub(){
+                        this.addMessage();
                     }
+                },
+                ready(){
+                    this.getOldData(1);
                 }
-            });
+            })
         };
     </script>
 </head>
@@ -79,23 +79,23 @@
 <div class="znsArea">
     <!--留言-->
     <div class="takeComment">
-        <textarea name="textarea" class="takeTextField" id="tijiaoText" v-model="textMain" @keydown.enter.prevent="show"></textarea>
+        <textarea name="textarea" class="takeTextField" v-model="msg" @keydown.enter.prevent="enterSub"></textarea>
         <div class="takeSbmComment">
-            <input type="button" class="inputs" @click="addWei"/>
+            <input type="button" class="inputs" @click="addMessage"/>
             <span>(可按 Enter 回复)</span>
         </div>
     </div>
     <!--已留-->
     <div class="commentOn">
-        <div class="noContent" v-show="myData.length==0">暂无留言</div>
+        <div class="noContent" v-show="myData.length ===0">暂无留言</div>
         <div class="messList">
-            <div class="reply" v-for="item in myData">
-                <p class="replyContent">{{item.content}}</p>
+            <div class="reply" v-cloak v-for="resData in myData">
+                <p class="replyContent">{{resData.content}}</p>
                 <p class="operation">
-                    <span class="replyTime">{{item.time}}</span>
+                    <span class="replyTime">{{resData.time}}</span>
                     <span class="handle">
-                    	<a href="javascript:" class="top">{{item.acc}}</a>
-                        <a href="javascript:" class="down_icon">{{item.ref}}</a>
+                    	<a href="javascript:" class="top">{{resData.acc}}</a>
+                        <a href="javascript:" class="down_icon">{{resData.ref}}</a>
                         <a href="javascript:" class="cut">删除</a>
                     </span>
                 </p>

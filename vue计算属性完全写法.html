@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue计算属性默认写法</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            let vm = new Vue({
+                el:"#box",
+                data:{
+                    a:1
+                },
+                computed:{
+                    b:{
+                        get(){
+                            return this.a+2;
+                        },
+                        set(val){
+                            this.a = val;
+                        }
+                    }
+                }
+            });
+            document.onclick=function(){
+                vm.a=10;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        {{"a:"+a}}
+        <br>
+        {{"b:"+b}}
+    </div>
+</body>
+</html>
