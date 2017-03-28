@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue生命周期</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            //box相当于mvc框架中的c,
+            var vm = new Vue({
+                el: '#vm',
+                data:{
+                    message:'vue 生命周期'
+                },
+                created: function(){
+                    console.log('create');
+                },
+                beforeCompile: function(){
+                    console.log('beforeCompile');
+                },
+                compiled: function(){
+                    console.log('compiled');
+                },
+                ready: function(){
+                    console.log('ready');
+                },
+                beforeDestroy: function(){
+                    console.log('beforeDestroy');
+                },
+                destroyed: function(){
+                    console.log('destroyed');
+                },
+            });
+            document.onclick = function(){
+                vm.$destroy();
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="vm">
+        {{message}}
+    </div>
+</body>
+</html>
