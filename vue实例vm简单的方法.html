@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue实例的方法</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            var vm = new Vue({
+                c:"234",
+                data:{
+                    message:"Hello Vue"
+                }
+            });
+            vm.$mount("#box");
+            console.log(vm.$el);
+            console.log(vm.$data.message);
+            console.log(vm.$options.c);
+            console.log(vm.$log());
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        {{message}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue过滤器limitby</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+            //box相当于mvc框架中的c,
+            var vm = new Vue({
+                el: "#box", //el绑定元素,里面是选择器
+                data: {
+                    arr:[1,2,3,4,5,6]
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="val in arr | limitBy 2">
+                {{val}}
+            </li>
+        </ul>
+        <hr>
+        <!--参数-->
+        <ul>
+            <li v-for="val in arr | limitBy 2 2">
+                {{val}}
+            </li>
+        </ul>
+        <!--参数倒数-->
+        <hr>
+        <ul>
+            <li v-for="val in arr | limitBy 2 arr.length-2">
+                {{val}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
