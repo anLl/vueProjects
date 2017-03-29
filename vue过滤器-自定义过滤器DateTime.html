@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue过滤器-自定义过滤器DateTime</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        function toDouble(time){
+            return time<10?"0"+time:time;
+        }
+        window.onload = function() {
+            Vue.filter('DataTime',function(input){
+                let date = new Date(input)
+                return date.getFullYear()+'-'+toDouble((date.getMonth()+1))+"-"+toDouble(date.getDate())+" "+toDouble(date.getHours())
+                    +":"+toDouble(date.getMinutes())+":"+toDouble(date.getSeconds());
+            });
+            let vm = new Vue({
+                el: "#box",
+                data: {
+                    a:Date.now()
+                }
+            });
+
+
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        {{a | DataTime}}
+    </div>
+</body>
+
+</html>

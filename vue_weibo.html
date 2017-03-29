@@ -12,6 +12,14 @@
         }
     </style>
     <script>
+        function toDouble(time){
+            return time<10?"0"+time:time;
+        }
+        Vue.filter('DataTime',function(input){
+            let date = new Date(input*1000);
+            return date.getFullYear()+'-'+toDouble((date.getMonth()+1))+"-"+toDouble(date.getDate())+" "+toDouble(date.getHours())
+                +":"+toDouble(date.getMinutes())+":"+toDouble(date.getSeconds());
+        });
         window.onload = function () {
             let vm = new Vue({
                 el: ".znsArea",
@@ -92,7 +100,7 @@
             <div class="reply" v-cloak v-for="resData in myData">
                 <p class="replyContent">{{resData.content}}</p>
                 <p class="operation">
-                    <span class="replyTime">{{resData.time}}</span>
+                    <span class="replyTime">{{resData.time | DataTime}}</span>
                     <span class="handle">
                     	<a href="javascript:" class="top">{{resData.acc}}</a>
                         <a href="javascript:" class="down_icon">{{resData.ref}}</a>
