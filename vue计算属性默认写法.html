@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue计算属性默认写法</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            let vm = new Vue({
+                el:"#box",
+                data:{
+                    message:"Hello Vue"
+                },
+                computed:{
+                    msg:function(){
+                        return "我是msg计算属性"
+                    }
+                }
+            });
+            document.onclick=function(){
+                vm.message ="Hello vue2 PAPAPA"
+                //这是计算属性，默认写法只是调用了get方法，所以不能设置值
+                vm.msg ="Hello vue2"
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    {{message}}
+    <br>
+    {{msg}}
+</div>
+</body>
+</html>
