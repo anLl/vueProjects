@@ -12,7 +12,8 @@
             var vm = new Vue({
                 el: "#box", //el绑定元素,里面是选择器
                 data: {
-
+                    arr:[1,2,3,4,5,6,7],
+                    msg:''
                 }
             });
         }
@@ -24,7 +25,12 @@
 
 <body>
     <div id="box">
-
+        <input type="text" v-model="msg">
+        <ul>
+            <li v-for="val in arr | orderBy -1">
+                {{val}}
+            </li>
+        </ul>
     </div>
 </body>
 

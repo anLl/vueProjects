@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue自定义元素指令</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            Vue.elementDirective("zn-red",{
+                bind:function(){
+                    this.el.style.background='red'
+                }
+            });
+            let box = new Vue({
+                el:"#box",
+                data:{
+                    message:"Hello Vue",
+                    blueColor:"HAHA"
+                }
+            });
+        }
+    </script>
+    <style>
+        zn-red{
+            width: 100px;
+            height: 100px;
+            background: gray;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <zn-red></zn-red>
+    </div>
+</body>
+</html>

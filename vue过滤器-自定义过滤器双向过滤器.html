@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue过滤器双向过滤器</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function() {
+/*            Vue.filter("filterInput",function(input){
+                return input.replace(/<[^<+>$]/g,'');
+            });*/
+            Vue.filter("filterInput",{
+//                model->view
+                read(input){
+                    return input<10?"0"+input:input;
+                },
+//                view->model
+                write(val){
+                    return val
+                }
+            });
+            let vm = new Vue({
+                el: "#box",
+                data: {
+                    msg:'<strong>welCome</strong>'
+                }
+            });
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model="msg | filterInput">
+        <br>
+        <span v-html="msg"></span>
+
+    </div>
+</body>
+
+</html>
