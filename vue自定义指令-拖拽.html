@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue自定义指令</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            Vue.directive("drag",function(){
+                let oDiv = this.el;
+                oDiv.onmousedown = function(ev){
+                    let disX = ev.clientX-oDiv.offsetLeft;
+                    let disY = ev.clientY-oDiv.offsetTop;
+
+                    document.onmousemove=function(ev){
+                        let oEvent = ev||event;
+                        let l =oEvent.clientX-disX;
+                        let t =oEvent.clientY-disY;
+                        if(l<=0){
+                            l=0
+                        }else if (l >= document.documentElement.clientWidth - oDiv.offsetWidth) {
+                            l = document.documentElement.clientWidth - oDiv.offsetWidth;
+                        };
+                        if(t<=0){
+                            t=0
+                        }else if (t >= document.documentElement.clientHeight - oDiv.offsetHeight) {
+                            t = document.documentElement.clientHeight - oDiv.offsetHeight;
+                        }
+                        oDiv.style.left=l+"px";
+                        oDiv.style.top =t+"px";
+                    };
+                    document.onmouseup = function(){
+                        document.onmousemove=null;
+                        document.onmouseup=null;
+                    }
+                };
+            });
+            let box = new Vue({
+                el:"#box",
+                data:{
+                    message:"Hello Vue"
+                }
+            });
+        }
+    </script>
+
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background:red;
+            position: absolute;
+            right:0;
+            top:0;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="box">
+        <span id="box1" v-drag></span>
+    </div>
+</body>
+</html>

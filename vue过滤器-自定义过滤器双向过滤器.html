@@ -14,7 +14,7 @@
             Vue.filter("filterInput",{
 //                model->view
                 read(input){
-                    return input<10?"0"+input:input;
+                    return input.replace(/<[^<]+>/g,'');
                 },
 //                view->model
                 write(val){

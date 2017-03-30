@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue过渡transition</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            let box = new Vue({
+                el:"#box",
+                data:{
+                    beSign:true
+                },
+                methods:{
+                    show(){
+                        this.beSign=!this.beSign;
+                    }
+                }
+            });
+        }
+    </script>
+    <style>
+        #box{
+            width: 500px;
+            margin: 50px auto;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background:red;
+            margin-top: 10px;
+        }
+
+        .fade-transition{
+            transition: all 1s ease;
+        }
+        .fade-enter{
+            opacity: 0;
+            transform: translateX(200px);
+        }
+        .fade-leave{
+            opacity: 0;
+            transform: translateX(200px);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮" @click="show">
+        <div class="box1" v-show="beSign" transition="fade"></div>
+    </div>
+</body>
+</html>
