@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件-父组件获取子组件数据</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function () {
+            let vm = new Vue({
+                el: "#box",
+                data: {},
+                methods: {},
+                components: {
+                    father: {
+                        template: "#fatherTemp",
+                        data(){
+                            return {
+                                fatherMsg: "我是父组件数据",
+                                formChild:''
+                            }
+                        },
+                        methods: {
+                            showMsg(){
+                                alert(this.fatherMsg);
+                            },
+                            getChild(formMsg){
+                                this.formChild = formMsg;
+                            }
+                        },
+                        components: {
+                            children: {
+                                template: "#childTemp",
+                                data(){
+                                    return {
+                                        childMsg: "我是子组件数据",
+                                        fathers:""
+                                    }
+                                },
+                                props:{
+                                    "father-mes":String
+                                },
+                                methods: {
+                                    showChild(){
+                                        alert(this.childMsg);
+                                    },
+                                    getFather(){
+                                        this.fathers = this.fatherMes
+                                    },
+                                    send(){
+                                        this.$emit("form-child",this.childMsg);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <father></father>
+    <template id="fatherTemp">
+        <h1 @click="showMsg">{{fatherMsg}}->{{formChild}}</h1>
+        <children :father-mes="fatherMsg" @form-child="getChild"></children>
+    </template>
+    <template id="childTemp">
+        <h2 @click="showChild">{{childMsg}}->{{fathers}}</h2>
+        <input type="button" value="获取父组件数据" @click="getFather">
+        <input type="button" value="向父组件发送数据" @click="send">
+    </template>
+</div>
+</body>
+</html>
