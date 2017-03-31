@@ -15,7 +15,10 @@
                 let vm = new Vue({
                     c:"234",
                     data:{
-                        message:"Hello Vue"
+                        message:"Hello Vue",
+                        msg:{
+                            a:"hahaha"
+                        }
                     }
                 });
                 vm.$mount("#box");
@@ -26,6 +29,9 @@
                 vm.$watch("message",function(){
                     alert("改变了");
                 });
+                vm.$watch("msg",function(){
+                    alert("改变了");
+                },{deep:true});
 
         </script>
     </div>

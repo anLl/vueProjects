@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件-其他地方写template</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            let vm = new Vue({
+                el:"#box",
+                data:{
+                    whos:"aaa",
+                    msg:"我晕哦"
+                },
+                components:{
+                   'aaa':{
+                       template:"#Ta",
+                       data(){
+                           return {
+                               msg:"我是AAA"
+                           }
+                       },
+                       methods:{
+                           show(){
+                               alert(this.msg);
+                           }
+                       }
+                   },
+                    'bbb':{
+                        template:"#Tb",
+                        data(){
+                            return {
+                                msg:"我是BBB"
+                            }
+                        },
+                        methods:{
+                            show(){
+                                alert(this.msg);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" @click="whos='aaa'" value="组件aaa">
+        <input type="button" @click="whos='bbb'" value="组件bbb">
+        <components :is="whos"></components>
+        <template id="Ta">
+            <h1 @click="show">{{msg}}</h1>
+        </template>
+        <template id="Tb">
+            <h1 @click="show">{{msg}}</h1>
+        </template>
+    </div>
+</body>
+</html>

@@ -2,39 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vue组件0</title>
+    <title>vue组件另一种编写方式</title>
     <script src="bower_components/vue/dist/vue.js"></script>
     <!--<script src="js/jquery-1.11.3.min.js"></script>-->
     <script>
         window.onload  =function(){
-
-            let Aaa=Vue.extend({
+            Vue.component("my-aa",{
                 template:"<h2 @click='show'>{{msg}}</h2>",
                 data(){
                     return {
-                        msg:"haha^^^"
+                        msg:"另一种方式"
                     }
                 },
                 methods:{
                     show(){
-                        alert(1);
+                        alert(this.msg);
                     }
                 }
             });
-            //全局组件
-            Vue.component("aaa",Aaa);
             let vm = new Vue({
                 el:"#box",
-                data:{
-                    message:"Hello Vue"
-                }
             });
         }
     </script>
 </head>
 <body>
     <div id="box">
-        <aaa></aaa>
+        <my-aa></my-aa>
     </div>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件-其他地方写template</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            let vm = new Vue({
+                el:"#box",
+                components:{
+                    com:{
+                        template:"#aa",
+                        data(){
+                            return {
+                                father:"我是父组件数据"
+                            }
+                        },
+                        components:{
+                            bbb:{
+                                template:"#bb",
+                                props:{
+                                  m:String
+                                },
+                                data(){
+                                    return {
+                                        child:"我是子组件数据"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <com></com>
+
+        <template id="aa">
+            <h1>{{father}}</h1>
+            <bbb :m="father"></bbb>
+        </template>
+        <template id="bb">
+            <h2>{{child}}->{{m}}</h2>
+        </template>
+    </div>
+</body>
+</html>

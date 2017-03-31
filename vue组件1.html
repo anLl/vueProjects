@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vue组件1</title>
+    <title>vue组件局部组件</title>
     <script src="bower_components/vue/dist/vue.js"></script>
     <!--<script src="js/jquery-1.11.3.min.js"></script>-->
     <script>
         window.onload  =function(){
-//          全局组件
             let Aaa=Vue.extend({
-                template:"<h2>我是h2</h2>"
+                template:"<h2>{{msg}}</h2>",
+                data(){
+                    return {
+                        msg:"局部组件"
+                    }
+                }
             });
-            Vue.component("aaa",Aaa);
             let vm = new Vue({
                 el:"#box",
                 data:{
                     message:"Hello Vue"
+                },
+                components:{
+                    aaa:Aaa
                 }
             });
         }

@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d210af72-bf1e-49e0-aa19-7a742e19fc1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue自定义指令-拖拽.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue过度效果animatecss.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue过度效果transiton.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件5-动态组件.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue组件6-父子组件.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue实例vm简单的方法.html" afterPath="$PROJECT_DIR$/vue实例vm简单的方法.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue过滤器-自定义过滤器双向过滤器.html" afterPath="$PROJECT_DIR$/vue过滤器-自定义过滤器双向过滤器.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue组件.html" afterPath="$PROJECT_DIR$/vue组件.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue组件1.html" afterPath="$PROJECT_DIR$/vue组件1.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,31 +65,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vue过度效果transiton.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue过度效果transiton.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vue过度效果animatecss.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue过度效果animatecss.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vue组件.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="vue组件.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue组件.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+            <state relative-caret-position="418">
+              <caret line="22" column="15" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -97,8 +78,58 @@
       <file leaf-file-name="vue组件1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue组件1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state relative-caret-position="285">
+              <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vue组件2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue组件2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="627">
+              <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vue组件3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue组件3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vue组件4.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue组件4.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="627">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vue组件5-动态组件.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue组件5-动态组件.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="792">
+              <caret line="47" column="6" lean-forward="true" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vue组件6-父子组件.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vue组件6-父子组件.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="773">
+              <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -124,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vue尝试1.html" />
         <option value="$PROJECT_DIR$/vue常用的指令1.html" />
         <option value="$PROJECT_DIR$/vue常用的指令2.html" />
         <option value="$PROJECT_DIR$/vue常用的指令3.html" />
@@ -165,12 +195,17 @@
         <option value="$PROJECT_DIR$/vue自定义元素指令.html" />
         <option value="$PROJECT_DIR$/vue自定义指令-拖拽.html" />
         <option value="$PROJECT_DIR$/vue过滤器-自定义过滤器双向过滤器.html" />
-        <option value="$PROJECT_DIR$/vue实例vm简单的方法.html" />
         <option value="$PROJECT_DIR$/vue过度效果animate.html" />
         <option value="$PROJECT_DIR$/vue过度效果transiton.html" />
         <option value="$PROJECT_DIR$/vue过度效果animatecss.html" />
-        <option value="$PROJECT_DIR$/vue组件1.html" />
+        <option value="$PROJECT_DIR$/vue实例vm简单的方法.html" />
         <option value="$PROJECT_DIR$/vue组件.html" />
+        <option value="$PROJECT_DIR$/vue组件1.html" />
+        <option value="$PROJECT_DIR$/vue组件2.html" />
+        <option value="$PROJECT_DIR$/vue组件3.html" />
+        <option value="$PROJECT_DIR$/vue组件4.html" />
+        <option value="$PROJECT_DIR$/vue组件5-动态组件.html" />
+        <option value="$PROJECT_DIR$/vue组件6-父子组件.html" />
       </list>
     </option>
   </component>
@@ -195,7 +230,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1932" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -234,7 +269,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -263,6 +297,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -271,7 +306,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../applicationuk" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
@@ -307,20 +342,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.vue组件.html">
-    <configuration default="false" name="vue过滤器-自定义过滤器双向过滤器.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue过滤器-自定义过滤器双向过滤器.html">
+  <component name="RunManager" selected="JavaScript Debug.vue组件6-父子组件.html">
+    <configuration default="false" name="vue组件2.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue组件2.html">
       <method />
     </configuration>
-    <configuration default="false" name="vue自定义元素指令.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue自定义元素指令.html">
+    <configuration default="false" name="vue组件3.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue组件3.html">
       <method />
     </configuration>
-    <configuration default="false" name="vue实例vm简单的方法.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue实例vm简单的方法.html">
+    <configuration default="false" name="vue组件4.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue组件4.html">
       <method />
     </configuration>
-    <configuration default="false" name="vue过度效果animatecss.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue过度效果animatecss.html">
+    <configuration default="false" name="vue组件5-动态组件.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue组件5-动态组件.html">
       <method />
     </configuration>
-    <configuration default="false" name="vue组件.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue组件.html">
+    <configuration default="false" name="vue组件6-父子组件.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/vueProjects/vue组件6-父子组件.html">
       <method />
     </configuration>
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
@@ -391,19 +426,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.vue过滤器-自定义过滤器双向过滤器.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.vue自定义元素指令.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.vue实例vm简单的方法.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.vue过度效果animatecss.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.vue组件.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.vue组件2.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.vue组件3.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.vue组件4.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.vue组件5-动态组件.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.vue组件6-父子组件.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.vue组件.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.vue过度效果animatecss.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.vue实例vm简单的方法.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.vue过滤器-自定义过滤器双向过滤器.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.vue自定义元素指令.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.vue组件6-父子组件.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.vue组件5-动态组件.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.vue组件4.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.vue组件3.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.vue组件2.html" />
       </list>
     </recent_temporary>
   </component>
@@ -429,17 +464,19 @@
       <workItem from="1490779141715" duration="2910000" />
       <workItem from="1490799597239" duration="3109000" />
       <workItem from="1490875061155" duration="10079000" />
+      <workItem from="1490925008245" duration="2879000" />
+      <workItem from="1490947601679" duration="5589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59888000" />
+    <option name="totallyTimeSpent" value="68356000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17377399" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17735043" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20309168" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -474,41 +511,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vue常用的指令1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue常用的指令2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue常用的指令3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue事件深入-事件对象冒泡.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue基础事件.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue事件深入-事件对象阻止默认事件.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -590,7 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="14" column="58" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -613,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -718,13 +718,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
-          <folding>
-            <marker date="1490874867153" expanded="true" signature="269:400" ph="{...}" />
-            <marker date="1490874867153" expanded="true" signature="330:400" ph="{&quot;el&quot;: &quot;##box&quot;...}" />
-            <marker date="1490874867153" expanded="true" signature="398:400" ph="{...}" />
-            <marker date="1490874867153" expanded="true" signature="746:756" ph="..." />
-            <marker date="1490874867153" expanded="true" signature="746:764" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -760,10 +754,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue自定义指令.html">
+    <entry file="file://$PROJECT_DIR$/vue过滤器-自定义过滤器双向过滤器.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        <state relative-caret-position="347">
+          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue过度效果animatecss.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue实例vm简单的方法.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue自定义指令-拖拽.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -776,6 +794,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vue自定义指令.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vue自定义元素指令.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -784,58 +810,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue自定义指令-拖拽.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue过滤器-自定义过滤器双向过滤器.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue实例vm简单的方法.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue过度效果transiton.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
+        <state relative-caret-position="-158">
           <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue过度效果animatecss.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue组件1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vue组件.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        <state relative-caret-position="418">
+          <caret line="22" column="15" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue组件1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue组件2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue组件3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue组件4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue组件5-动态组件.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="47" column="6" lean-forward="true" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue组件6-父子组件.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
           <folding />
         </state>
       </provider>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件-其他地方写template</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload  =function(){
+            let vm = new Vue({
+                el:"#box",
+                components:{
+                    'my-aa':{
+                        data(){
+                            return{
+                                msg:'aaa'
+                            }
+                        },
+                        methods:{
+                            show(){
+                                alert(1);
+                            }
+                        },
+                        template:'#myTemp'
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <my-aa></my-aa>
+
+        <template id="myTemp">
+            <h1 @click="show">{{msg+'嘿嘿'}}</h1>
+        </template>
+    </div>
+</body>
+</html>
