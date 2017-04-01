@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件-槽口slot</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <script>
+        window.onload = function () {
+            let vm = new Vue({
+                el: "#box",
+                data: {},
+                methods: {},
+                components: {
+                    'my-component':{
+                        template:"#slotTemp"
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <my-component>
+        <ul>
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+            <li>444</li>
+            <li>555</li>
+        </ul>
+    </my-component>
+
+    <my-component></my-component>
+    <template id="slotTemp">
+        <h1>我说h1标签</h1>
+        <slot>我说默认显示的slot</slot>
+    </template>
+</div>
+</body>
+</html>
