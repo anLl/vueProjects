@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <input type="button" @click="add" value="添加">
+    <ul>
+        <li v-for="(item,index) in listItem">
+            {{item}},{{index}}
+        </li>
+    </ul>
+    <input type="button" @click="addPerson" value="添加人">
+    <ul>
+        <li v-for="(item,key,index) in presons">
+            {{item}},{{key}},{{index}}
+        </li>
+    </ul>
+</div>
+
+
+<script src="bower_components/vue/dist/vue.js"></script>
+
+<script>
+    let vm=new Vue({
+        el: '#box',
+        data: {
+            listItem: ['apple', 'pear', 'orange'],
+            presons: {
+                "name": "哎哎哎"
+            }
+        },
+        methods: {
+            add(){
+                this.listItem.push("tomato");
+            },
+            addPerson(){
+
+                this.presons["234"]='345'
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

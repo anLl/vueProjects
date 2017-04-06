@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <aaa></aaa>
+    {{message}}
+</div>
+<template id="hasRootEl">
+    <div>
+        <h1>我是H1</h1>
+        <span>我是span</span>
+    </div>
+</template>
+
+<script src="bower_components/vue/dist/vue.js"></script>
+
+<script>
+    let Home={ //这是2.0模板  类似Vue.extend();
+        template:'#hasRootEl'
+    };
+    new Vue({
+        el: '#box',
+        data: {
+            message: 'welcome vue2.0'
+        },
+        components:{
+            'aaa':Home
+        }
+    });
+</script>
+
+</body>
+</html>

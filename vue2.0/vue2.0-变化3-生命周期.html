@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <input type="button" @click="change" value="改变">
+    <input type="button" @click="destroy" value="销毁">
+    {{message}}
+</div>
+
+
+<script src="bower_components/vue/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            message:'welcome vue2.0'
+        },
+        methods:{
+            change(){
+                this.message='Changed!'
+            },
+            destroy(){
+                this.$destroy();
+            }
+        },
+        beforeCreate(){
+            console.log("实例创建之前,没有属性")
+        },
+        created(){
+            console.log("实例创建完成,属性已经绑定,但是没有创建DOM")
+        },
+        beforeMount(){
+            console.log('模板编译之前')
+        },
+        mounted(){
+            console.log("模板编译完成");
+        },
+        beforeUpdate(){
+            console.log("数据改变之前")
+        },
+        updated(){
+            console.log("数据改变完成")
+        },
+        beforeDestroy(){
+            console.log("实例销毁之前")
+        },
+        destroyed(){
+            console.log("实例销毁完成")
+        }
+    });
+</script>
+
+</body>
+</html>
