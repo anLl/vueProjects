@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            Vue.filter("currency",function(data,symbol){
+                if(symbol == undefined){
+                    return "$"+data;
+                }
+                return ""+symbol+""+data;
+            });
+            let vm = new Vue({
+                el: '#box',
+                data: {},
+                methods: {},
+                components:{
+                    'my-parent':{
+                        template:'#parent',
+                        data(){
+                            return{
+                                parentMessage:123123
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+<template id="parent">
+    <div class="parentContent">
+
+        <!--删除了自带的过滤器，但是保留自定义过滤器-->
+        <h1>{{parentMessage | currency}}</h1>
+    </div>
+</template>
+<div id="box">
+    <my-parent></my-parent>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+</body>
+</html>

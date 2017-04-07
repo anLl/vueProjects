@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            let vm = new Vue({
+                el: '#box',
+                data: {},
+                methods: {},
+                components:{
+                    'my-parent':{
+                        template:'#parent',
+                        data(){
+                            return{
+                                giveChild:{
+                                    parentMessage:'我是父组件数据'
+                                }
+                            }
+                        },
+                        components:{
+                            'my-child':{
+                                template:'#child',
+                                props:['parents-msg'],
+                                data(){
+                                    return{
+                                        childMessage:'我是子组件数据'
+                                    }
+                                },
+                                methods:{
+                                    change(){
+                                        this.parentsMsg.parentMessage='改变了'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+<template id="parent">
+    <div class="parentContent">
+        <h1>{{giveChild.parentMessage}}</h1>
+        <!--不能用.sync同步更改父组件数据-->
+        <my-child :parents-msg="giveChild"></my-child>
+    </div>
+</template>
+<template id="child">
+    <div class="childContent">
+        <h1>{{childMessage}}->{{parentsMsg.parentMessage}}</h1>
+        <input type="button" value="更改" @click="change">
+    </div>
+</template>
+<div id="box">
+    <my-parent></my-parent>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<!--<script src="../js/vue1x.js"></script>-->
+</body>
+</html>
