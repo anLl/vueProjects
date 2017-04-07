@@ -10,55 +10,41 @@
                 data: {},
                 methods: {},
                 components:{
-                    'my-parent':{
-                        template:'#parent',
+                    'com-a':{
+                        template:'#AAA',
                         data(){
-                            return{
-                                parentMessage:'我是父组件数据'
-                            }
-                        },
-                        components:{
-                            'my-child':{
-                                template:'#child',
-                                props:['parents-msg'],
-                                data(){
-                                    return{
-                                        childMessage:'我是子组件数据',
-                                        testParent:''
-                                    }
-                                },
-                                mounted(){
-                                    this.testParent = this.parentsMsg
-                                },
-                                methods:{
-                                    change(){
-                                        this.testParent='改变了'
-                                    }
-                                }
-                            }
+
                         }
-                    }
+                    },
+                    'com-b':{
+                        template:'#BBB'
+                    },
+                    'com-c':{
+                        template:'#CCC'
+                    },
                 }
             });
         };
     </script>
 </head>
 <body>
-<template id="parent">
-    <div class="parentContent">
-        <h1>{{parentMessage}}</h1>
-        <!--不能用.sync同步更改父组件数据-->
-        <my-child :parents-msg="parentMessage"></my-child>
-    </div>
-</template>
-<template id="child">
-    <div class="childContent">
-        <h1>{{childMessage}}->{{testParent}}</h1>
-        <input type="button" value="更改" @click="change">
-    </div>
-</template>
+
+    <template id="AAA">
+        <h1>我是A组件</h1>
+        <button>把A数据给C</button>
+    </template>
+    <template id="BBB">
+        <h1>我是B组件</h1>
+        <button>把B数据给C</button>
+    </template>
+    <template id="CCC">
+        <h1>我是C组件</h1>
+    </template>
+
 <div id="box">
-    <my-parent></my-parent>
+    <com-a></com-a>
+    <com-b></com-b>
+    <com-c></com-c>
 </div>
 
 <script src="node_modules/vue/dist/vue.js"></script>
