@@ -3,24 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
     <script>
+
+        let Events = new Vue();
         window.onload = function () {
             let vm = new Vue({
                 el: '#box',
                 data: {},
+                mounted(){
+                    console.log(this)
+                },
                 methods: {},
-                components:{
-                    'com-a':{
-                        template:'#AAA',
+                components: {
+                    'com-a': {
+                        template: '#AAA',
                         data(){
-
+                            return {
+                                dataA: '我是A数据'
+                            }
+                        },
+                        methods: {
+                            sendA(){
+                                Events.$emit('a-msg', this.dataA);
+                            }
                         }
                     },
-                    'com-b':{
-                        template:'#BBB'
+                    'com-b': {
+                        template: '#BBB',
+                        data(){
+                            return {
+                                dataB: '我是B数据'
+                            }
+                        },
+                        methods: {
+                            sendB(){
+                                Events.$emit('b-msg', this.dataB);
+                            }
+                        }
                     },
-                    'com-c':{
-                        template:'#CCC'
+                    'com-c': {
+                        template: '#CCC',
+                        data(){
+                            return {
+                                a: '',
+                                b: ''
+                            }
+                        },
+                        mounted(){
+                            Events.$on('a-msg', function (a) {
+                                this.a = a;
+                            }.bind(this));
+                            Events.$on('b-msg', function (b) {
+                                this.b = b;
+                            }.bind(this))
+                        }
                     },
                 }
             });
@@ -29,17 +66,26 @@
 </head>
 <body>
 
-    <template id="AAA">
-        <h1>我是A组件</h1>
-        <button>把A数据给C</button>
-    </template>
-    <template id="BBB">
-        <h1>我是B组件</h1>
-        <button>把B数据给C</button>
-    </template>
-    <template id="CCC">
+<template id="AAA">
+    <div>
+        <span>我是A组件</span>-><span>{{dataA}}</span>
+        <button @click="sendA">把A数据给C</button>
+    </div>
+
+</template>
+<template id="BBB">
+    <div>
+        <span>我是B组件</span>-><span>{{dataB}}</span>
+        <button @click='sendB'>把B数据给C</button>
+    </div>
+</template>
+<template id="CCC">
+    <div>
         <h1>我是C组件</h1>
-    </template>
+        <p>C组件接受的A组件数据:->{{a}}</p>
+        <p>C组件接受的B组件数据:->{{b}}</p>
+    </div>
+</template>
 
 <div id="box">
     <com-a></com-a>
@@ -47,7 +93,7 @@
     <com-c></com-c>
 </div>
 
-<script src="node_modules/vue/dist/vue.js"></script>
+
 <!--<script src="../js/vue1x.js"></script>-->
 </body>
 </html>
