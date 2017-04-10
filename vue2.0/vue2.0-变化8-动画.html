@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        p{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 1s
+        }
+        .fade-enter{
+            width: 100px;
+            height: 100px;
+            opacity: 0
+        }
+        .fade-enter-active{
+            width: 300px;
+            height: 300px;
+            opacity: 1;
+        }
+        .fade-leave{
+            width: 300px;
+            height: 300px;
+            opacity: 1
+        }
+        .fade-leave-active{
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="fade">
+        <p v-show="show"></p>
+    </transition>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#demo',
+        data: {
+            show: false
+        }
+    })
+</script>
+
+</body>
+</html>

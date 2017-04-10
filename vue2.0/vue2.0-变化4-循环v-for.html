@@ -28,8 +28,8 @@
         el: '#box',
         data: {
             listItem: ['apple', 'pear', 'orange'],
-            presons: {
-                "name": "哎哎哎"
+            presons:{
+                name:'anrui'
             }
         },
         methods: {
@@ -37,8 +37,15 @@
                 this.listItem.push("tomato");
             },
             addPerson(){
-
-                this.presons["234"]='345'
+                this.$set(this.presons,"age",12)
+            }
+        },
+        watch:{
+            persons:function(val,old){
+                console.log(val,old);
+            },
+            listItem(val,old){
+                console.log(val,old);
             }
         }
     });
