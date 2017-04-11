@@ -17,39 +17,17 @@
             margin: 10px auto;
             background:red;
         }
-        .fade-enter-active,.fade-leave-active{
-            transition: 1s all ease;
-        }
-
-        .fade-enter-active{
-            width: 300px;
-            height: 300px;
-            opacity: 1;
-        }
-        .fade-leave-active{
-            width: 100px;
-            height: 100px;
-            opacity: 0;
-        }
-        .fade-enter{
-            width: 100px;
-            height: 100px;
-            opacity: 0;
-        }
-        .fade-leave{
-            width: 300px;
-            height: 300px;
-            opacity: 1;
-        }
     </style>
     <script src="node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
     <script>
         window.onload = function () {
             new Vue({
                 el: '#app',
                 data:{
                     show:false
-                }
+                },
+                methods:{}
             })
         }
     </script>
@@ -59,8 +37,8 @@
 <div id="app">
     <input type="button" @click="show=!show" value="显影">
 
-    <transition name="fade">
-        <div class="box" v-show="show"></div>
+    <transition enter-active-class="bounceInLeft" leave-active-class="bounceOutRight">
+        <div class="box animated" v-show="show"></div>
     </transition>
 
 </div>

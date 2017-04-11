@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <style>
+        #app{
+            width: 500px;
+            margin: 20px auto;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            background:red;
+        }
+    </style>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:'#app',
+                data:{
+                    show:'',
+                    fruits:['apple','banana','pear','orange','mongo']
+                },
+                computed:{
+                    lists(){
+                        let arr=[];
+                        this.fruits.forEach(function(val){
+                            if(val.indexOf(this.show)!=-1){
+                                arr.push(val);
+                            }
+                        }.bind(this));
+                        return arr;
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="show">
+
+    <transition-group enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
+        <div v-show="show" class="box animated" :key="index" v-for="(val,index) in lists">{{val}}</div>
+    </transition-group>
+
+</div>
+
+</body>
+</html>

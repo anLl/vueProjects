@@ -49,6 +49,29 @@
                 el: '#app',
                 data:{
                     show:false
+                },
+                methods:{
+                    beforeenter(el){
+                        console.log("动画进入前")
+                    },
+                    enter(el){
+                        console.log("动画进入时")
+                    },
+                    afterenter(el){
+                        console.log("动画进入之后")
+                    },
+                    beforeleave(el){
+                        console.log("动画离开前")
+                    },
+                    leave(el){
+                        console.log("动画离开时");
+                        el.style.background='blue'
+                    },
+                    afterleave(el){
+                        console.log("动画离开后");
+                        el.style.background='red'
+                    }
+
                 }
             })
         }
@@ -59,7 +82,9 @@
 <div id="app">
     <input type="button" @click="show=!show" value="显影">
 
-    <transition name="fade">
+    <transition name="fade" @before-enter="beforeenter" @enter="enter" @after-enter="afterenter"
+        @before-leave="beforeleave"    @leave="leave"   @after-leave="afterleave"
+    >
         <div class="box" v-show="show"></div>
     </transition>
 
